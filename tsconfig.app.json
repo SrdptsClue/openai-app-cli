@@ -22,9 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": [
-    "src/client/**/*.tsx",
-    "src/components/**/*.ts",
-    "src/utils/**/*.ts"
-  ]
+  "include": ["src/**/*.tsx"]
 }

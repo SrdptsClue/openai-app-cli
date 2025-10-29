@@ -4,16 +4,21 @@
   "description": "openai apps cli",
   "scripts": {
     "build": "tsx ./build.mts",
-    "dev": "vite --config vite.config.mts"
+    "dev": "vite --config vite.config.mts",
+    "start": "node ./output/index.mjs"
   },
   "keywords": [],
   "author": "Serecho",
   "license": "MIT",
   "dependencies": {
+    "@hono/mcp": "^0.1.4",
+    "@hono/node-server": "^1.19.5",
     "@modelcontextprotocol/sdk": "^1.20.2",
     "@react-three/fiber": "^9.4.0",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.23.24",
+    "hono": "^4.10.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.548.0",
     "react": "^19.2.0",
@@ -29,9 +34,10 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
-    "esbuild": "^0.25.11",
     "fast-glob": "^3.3.3",
     "tailwindcss": "^4.1.16",
+    "terser": "^5.44.0",
+    "tsup": "^8.5.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "^7.1.12"

@@ -1,5 +1,8 @@
 # OpenAI App AI 开发指南（Codex 专用）
 
+> 与用户的所有对话采用的语言是：中文
+> 代码中的注释视偏好为：English
+
 本文档面向新的 Codex 会话，浓缩了项目约定、目录结构与开发流程，用于确保每次协作都能快速对齐。
 
 ## 核心目标
@@ -24,7 +27,7 @@
 │   └── scripts
 ├── output/            # 构建产物目录
 │   ├── assets/        # client 打包资源（带 hash 版本与固定版本）
-│   └── server.js      # server 打包结果
+│   └── index.mjs      # server 打包结果
 ├── src/
 │   ├── client/        # 前端入口，每个资源一个子目录，入口为 index.tsx
 │   ├── server/        # MCP 服务端逻辑（index.ts 等）
@@ -48,9 +51,33 @@
    - 首页 `/` 自动列出可调试的资源链接。
    - **Fast Refresh 约定**：入口模块需导出组件（例如 `export function App()`），否则 Vite 会提示 `"true" export is incompatible"。
 2. 资源目录要求：
+
    - `src/client/<name>/index.tsx` 必须负责挂载并导出组件。
    - 在入口顶部显式 `import "./index.css"`（若存在样式），以便打包时生成独立 CSS。
    - 可使用 `src/utils/cn.ts` 中的 `cn` 辅助函数管理类名。
+   - 可使用 `src/utils/page.ts` 中的 `createApp` 辅助创建 Widget，例如：
+
+     ```tsx
+     import { cn } from "../../utils/cn"
+     import { createApp } from "../../utils/page"
+
+     function App() {
+       return (
+         <div
+           className={cn(
+             "w-screen h-screen",
+             "flex justify-center items-center",
+             "text-4xl font-semibold italic text-emerald-400"
+           )}
+         >
+           hello world
+         </div>
+       )
+     }
+
+     // `example` 为当前Widget的name
+     createApp("example", <App />)
+     ```
 
 ## 构建与部署
 
@@ -62,9 +89,9 @@
   3. 生成两份 HTML：
      - `<name>-<hash>.html`：引用带 hash 的脚本与样式，可长时间缓存。
      - `<name>.html`：固定名称，始终指向最新版本，便于服务端查找。
-  4. 使用 esbuild 将 `src/server/index.ts` 打包为 `output/server.js`。
+  4. 使用 esbuild 将 `src/server/index.ts` 打包为 `output/index.mjs`。
 
-> **运行**：`node output/server.js`
+> **运行**：`node output/index.mjs`
 
 ## 服务端行为速览
 
@@ -81,8 +108,8 @@
 
 ## 命令速查
 
-- `pnpm run dev`：本地多入口预览（端口 4444）。
+- `pnpm run dev`：本地多入口预览。
 - `pnpm run build`：生成 `output/` 目录产物。
-- `node output/server.js`：启动服务端。
+- `node output/index.mjs`：启动服务端。
 
 > 若遇到构建或运行问题，按照“先查原因再改动”的原则处理，并与用户确认需求是否发生变化。
