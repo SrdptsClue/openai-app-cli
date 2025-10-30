@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    color-scheme: light;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #e8e8e8;
+    --color-bg-tertiary: #f3f3f3;
+
+    --color-text-primary: #0d0d0d;
+    --color-text-secondary: #5d5d5d;
+    --color-text-tertiary: #8f8f8f;
+    --color-text-inverted: #8f8f8f;
+
+    --color-icon-primary: #0d0d0d;
+    --color-icon-secondary: #5d5d5d;
+    --color-icon-tertiary: #8f8f8f;
+    --color-icon-inverted: #8f8f8f;
+
+    --color-accent-blue: #0285ff;
+    --color-accent-red: #e02e2a;
+    --color-accent-orange: #e25507;
+    --color-accent-green: #008635;
+  }
+
+  :root[data-theme="dark"],
+  .dark {
+    color-scheme: dark;
+    --color-bg-primary: #212121;
+    --color-bg-secondary: #303030;
+    --color-bg-tertiary: #414141;
+
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cdcdcd;
+    --color-text-tertiary: #afafaf;
+    --color-text-inverted: #afafaf;
+
+    --color-icon-primary: #ffffff;
+    --color-icon-secondary: #cdcdcd;
+    --color-icon-tertiary: #afafaf;
+    --color-icon-inverted: #afafaf;
+
+    --color-accent-blue: #0285ff;
+    --color-accent-red: #ff8583;
+    --color-accent-orange: #ff9e6c;
+    --color-accent-green: #40c977;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+}
+
 @layer utilities {
   .overflow-auto > *,
   .overflow-scroll > *,

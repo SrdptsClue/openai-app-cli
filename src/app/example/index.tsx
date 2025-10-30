@@ -15,8 +15,7 @@ function App() {
       className={cn(
         "w-screen h-screen",
         "flex justify-center items-center",
-        "text-6xl font-semibold italic underline text-white",
-        "bg-linear-to-r from-emerald-400 to-emerald-900"
+        "text-6xl font-semibold italic underline"
       )}
     >
       hello world
