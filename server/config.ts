@@ -1,45 +1,66 @@
+import type { ServerOptions } from "@modelcontextprotocol/sdk/server/index.js"
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import z from "zod"
-import type { WidgetCollection } from "./base/widgetProvider"
-import {
-  Server,
-  type ServerOptions,
-} from "@modelcontextprotocol/sdk/server/index.js"
+import { readWidgetHtmlByUri } from "./utils/resource"
 
-export const MCPServerMetadata: ConstructorParameters<typeof Server>[0] = {
-  name: "app-node",
-  version: "0.0.0",
+export const MCPServerMetadata: ConstructorParameters<typeof McpServer>[0] = {
+  name: process.env.MCP_SERVER_NAME || "demo-server",
+  version: process.env.MCP_SERVER_VERSION || "1.0.0",
 }
 
-export const MCPServerOptions: ServerOptions = {
-  capabilities: {
-    resources: {},
-    tools: {},
-  },
-}
+export const MCPServerOptions: ServerOptions = {}
 
-export const widgetCollection: WidgetCollection[] = [
-  {
-    widget: {
-      id: "example",
-      title: "Show Example",
-      templateUri: "ui://widget/example.html",
-      invoking: "invoking example",
-      invoked: "invoked example",
-      assetName: "example",
-      responseText: "Rendered a example!",
+export function handleMCPServerRegistry(server: McpServer) {
+  const remoteAssetsOrigin = process.env.REMOTE_ASSETS_ORIGIN
+
+  const greetingWidgetUri = "ui://widget/greeting.html"
+
+  server.registerResource(
+    "greeting",
+    greetingWidgetUri,
+    {
+      title: "Greeting Resource",
+      description: "Dynamic greeting generator",
     },
-    toolInputSchema: {
-      type: "object",
-      properties: {
-        exampleTip: {
-          type: "string",
-          description: "A short and pleasant greeting.",
+    async ({ href: uri }) => ({
+      contents: [
+        {
+          uri,
+          mimeType: "text/html+skybridge",
+          text: readWidgetHtmlByUri(uri),
+          _meta: {
+            "openai/widgetPrefersBorder": true,
+            ...(remoteAssetsOrigin && {
+              "openai/widgetDomain": remoteAssetsOrigin,
+              "openai/widgetCSP": {
+                connect_domains: [remoteAssetsOrigin],
+                resource_domains: [remoteAssetsOrigin],
+              },
+            }),
+          },
         },
+      ],
+    })
+  )
+
+  server.registerTool(
+    "greeting",
+    {
+      title: "greeting Tool",
+      description: "Generate greeting messages",
+      _meta: {
+        "openai/outputTemplate": greetingWidgetUri,
+        "openai/widgetAccessible": true,
+        "openai/resultCanProduceWidget": true,
       },
-      required: ["exampleTip"],
+      inputSchema: { message: z.string() },
+      outputSchema: { result: z.string() },
     },
-    toolInputParser: z.object({
-      exampleTip: z.string(),
-    }),
-  },
-]
+    async ({ message }) => {
+      return {
+        content: [],
+        structuredContent: { result: `AI: ${message}` },
+      }
+    }
+  )
+}

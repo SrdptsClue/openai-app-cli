@@ -2,11 +2,11 @@
 
 > `Codex` 相关 AI 资料移至 `.AI/README.md`
 
-面向 Model Context Protocol (MCP) 的轻量级 Chat App 框架，提供多入口前端、可部署的服务端以及完整的构建脚本，帮助你在 ChatGPT 中快速接入自定义 Widget。当前文档适用于 `v1.0.0`。
+面向 Model Context Protocol (MCP) 的轻量级 Chat App 框架，提供多入口前端、可部署的服务端以及完整的构建脚本，帮助你在 ChatGPT 中快速接入自定义 Widget。
 
 ## 核心特性
 
-- 多 Widget 架构：`src/app/*/index.tsx` 每个目录都是一个独立入口，开发时自动生成调试页面，构建后输出独立的 HTML 片段和静态资源。
+- 多 Widget 架构：`src/widget/*/index.tsx` 每个目录都是一个独立入口，开发时自动生成调试页面，构建后输出独立的 HTML 片段和静态资源。
 - MCP 一体化服务：基于 Hono 启动 SSE 服务器，暴露 `/mcp` 与 ChatGPT Sandbox 对接，自动注册工具、资源模版并返回 Widget HTML（见 `server/helper/mcp-server.ts`、`server/base/widgetProvider.ts`）。
 - 自定义构建流程：`pnpm run build` 调用 `build.mts`，同时编译服务端与客户端，对静态资源加上版本号，输出到 `output/` 目录并为每个 Widget 生成独立 HTML。
 - 全局状态与宿主通讯：通过 `window.openai` 读取和写入 `toolOutput`、`widgetState` 等字段，提供 `useOpenAiGlobal`、`useWidgetState` 等 React Hook，便于与 ChatGPT 主站同步状态。
@@ -37,15 +37,17 @@ cp .env.example .env
 - `pnpm run build`：执行 `build.mts`，产出 `output/index.mjs` 与 `output/assets/`。
 - `pnpm run start`：在构建后运行 `node output/index.mjs`，启动 MCP SSE 服务。
 
+> 快速编译运行：`pnpm build; pnpm start`，若更新了代码，需要在 ChatGPT 中刷新一下连接器。
+
 ## 目录速览
 
 ```text
 ├── src/
-│   ├── app/           # Widget 入口（每个目录对应一个 Widget）
 │   ├── component/     # 客户端共享组件
 │   ├── i18n/          # i18next 初始化与语言配置
 │   ├── locales/       # 多语言 JSON 文案
-│   └── openai/        # 与 window.openai 交互的 Hook
+│   ├── openai/        # 与 window.openai 交互的 Hook
+│   └── widget/        # Widget 入口（每个目录对应一个 Widget）
 ├── server/            # MCP 服务端与工具注册逻辑
 ├── output/            # 构建产物（执行 build 后生成）
 └── build.mts          # 自定义构建脚本
@@ -54,23 +56,19 @@ cp .env.example .env
 ## MCP 服务说明
 
 - SSE Endpoint：`/mcp`（见 `server/helper/app.ts`），采用 `@hono/mcp` 提供的 `StreamableHTTPTransport`。
-- 注册的工具与资源定义在 `server/config.ts`，默认包含 `example` 工具：
-  - Tool 名称：`example`
-  - 输入参数：`exampleTip`（字符串）
-  - 响应内容：文本 `"Rendered a example!"`，并附带结构化参数回传
-- `WidgetProvider` 会从构建产物中读取 `example.html`，为 MCP 响应附加 `openai/outputTemplate` 等元数据，使 ChatGPT 能直接渲染 Widget。
+- 注册的工具与资源定义在 `server/config.ts`，使 ChatGPT 能直接渲染 Widget。
 
 ## 客户端 Widget 开发流程
 
 > Tailwind CSS 自定义配置在新版本中迁移到了 `src/index.css` 中，具体规则详见 [Tailwindcss Theme variables](https://tailwindcss.com/docs/theme)
 
-1. 在 `src/app/<widget-name>/` 下创建 `index.tsx`，使用 `createAppPage("<widget-name>", <App />)` 挂载组件，并可选引入局部样式。
+1. 在 `src/widget/<widget-name>/` 下创建 `index.tsx`，使用 `createAppPage("<widget-name>", <App />)` 挂载组件，并可选引入局部样式。
 2. 使用 `BaseRoot` 包裹根节点，它会监听宿主传入的语言并调用 `changeLanguage`。
 3. 通过 `useOpenAiGlobal("toolOutput")`、`useWidgetProps()` 等 Hook 获取宿主提供的数据；如需持久化状态，可使用 `useWidgetState()` 写回 `window.openai.setWidgetState`。
 4. 新增 Widget 后，更新 `server/config.ts` 的 `widgetCollection`，指定 `id`、`title`、`templateUri` 与校验 Schema。
 5. 运行 `pnpm run build` 重新生成 HTML 片段；`WidgetProvider` 会在启动时读取最新构建结果。
 
-示例组件（`src/app/example/index.tsx`）展示了如何读取 `toolOutput`，以及渲染国际化文案：
+示例组件（`src/widget/greeting/index.tsx`）展示了如何读取 `toolOutput`，以及渲染国际化文案：
 
 ```tsx
 function App() {
@@ -80,6 +78,8 @@ function App() {
   return <h1>{t("examle.title")}</h1>
 }
 ```
+
+> 注意 Widget 中调用 `createAppPage` 的第一个参数 `<name>` 与 Widget 名称和文件夹名称保持一致。
 
 ## 构建输出
 

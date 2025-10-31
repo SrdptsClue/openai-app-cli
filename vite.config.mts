@@ -9,7 +9,7 @@ import { defineConfig, type Plugin } from "vite"
 initEnv({ quiet: true })
 
 function buildInputs() {
-  const files = fg.sync("src/app/*/index.{tsx,jsx}", { dot: false })
+  const files = fg.sync("src/widget/*/index.{tsx,jsx}", { dot: false })
   return Object.fromEntries(
     files.map((f) => [path.basename(path.dirname(f)), path.resolve(f)])
   )

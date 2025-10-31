@@ -34,7 +34,7 @@ const ASSETS_DIR = join(OUTPUT_DIR, "assets")
 
 // Server and Client entry points
 const SERVER_ENTRY = resolve("server/index.ts")
-const CLIENT_ENTRY = "src/app/*/index.{tsx,ts,jsx,js}"
+const CLIENT_ENTRY = "src/widget/*/index.{tsx,ts,jsx,js}"
 
 // ========= Common Helper =========
 function log(prefix: string, message: string) {
@@ -89,7 +89,7 @@ async function buildClient() {
     return filepath.split("\\").join("/")
   }
 
-  // Collect all client app entry files
+  // Collect all client widget entry files
   function collectClientEntries(): ClientEntry[] {
     const files = fg.sync(CLIENT_ENTRY, { dot: false })
     if (!files.length) {
@@ -218,7 +218,7 @@ async function buildClient() {
     const newAbsPath = join(ASSETS_DIR, newRelativePath)
 
     renameSync(absPath, newAbsPath)
-    log(PREFIX, `${originalRelativePath} -> ${newRelativePath}`)
+    log("*", `${originalRelativePath} -> ${newRelativePath}`)
 
     return newRelativePath
   }
