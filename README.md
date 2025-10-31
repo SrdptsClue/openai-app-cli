@@ -1,4 +1,6 @@
-# OpenAI Apps CLI
+# OpenAI App CLI
+
+> `Codex` 相关 AI 资料移至 `.AI/README.md`
 
 面向 Model Context Protocol (MCP) 的轻量级 Chat App 框架，提供多入口前端、可部署的服务端以及完整的构建脚本，帮助你在 ChatGPT 中快速接入自定义 Widget。当前文档适用于 `v1.0.0`。
 

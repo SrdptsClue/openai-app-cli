@@ -1,9 +1,9 @@
 {
-  "name": "openai_apps_cli",
+  "name": "openai_app_cli",
   "version": "1.0.0",
-  "description": "openai apps cli",
+  "description": "openai app cli",
   "keywords": [],
-  "author": "Serecho",
+  "author": "SrdptsClue",
   "license": "MIT",
   "scripts": {
     "build": "tsx ./build.mts",
