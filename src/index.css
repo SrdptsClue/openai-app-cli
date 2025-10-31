@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --color-color-surface-primary: var(--color-bg-primary);
+  --color-color-surface-secondary: var(--color-bg-secondary);
+  --color-color-surface-tertiary: var(--color-bg-tertiary);
+
+  --color-color-text-primary: var(--color-text-primary);
+  --color-color-text-secondary: var(--color-text-secondary);
+  --color-color-text-tertiary: var(--color-text-tertiary);
+  --color-color-text-inverted: var(--color-text-inverted);
+
+  --color-color-icon-primary: var(--color-icon-primary);
+  --color-color-icon-secondary: var(--color-icon-secondary);
+  --color-color-icon-tertiary: var(--color-icon-tertiary);
+  --color-color-icon-inverted: var(--color-icon-inverted);
+
+  --color-color-accent-blue: var(--color-accent-blue);
+  --color-color-accent-red: var(--color-accent-red);
+  --color-color-accent-orange: var(--color-accent-orange);
+  --color-color-accent-green: var(--color-accent-green);
+}
+
 @layer base {
   :root {
     color-scheme: light;

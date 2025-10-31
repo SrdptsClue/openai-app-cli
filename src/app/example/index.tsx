@@ -21,7 +21,7 @@ function App() {
           "flex flex-col justify-center items-center gap-32"
         )}
       >
-        <h1 className="text-6xl font-semibold italic underline">
+        <h1 className="text-6xl font-semibold italic underline text-color-text-secondary">
           {t("examle.title")}
         </h1>
 
