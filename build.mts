@@ -36,14 +36,12 @@ const ASSETS_DIR = join(OUTPUT_DIR, "assets")
 const SERVER_ENTRY = resolve("server/index.ts")
 const CLIENT_ENTRY = "src/widget/*/index.{tsx,ts,jsx,js}"
 
-const getUrlPath = (url?: string) => {
-  try {
-    if (!url) return ""
-    const path = new URL(url).pathname
-    return path.endsWith("/") ? path.slice(0, -1) : path
-  } catch {
+const formatUrlPath = (url?: string) => {
+  if (!url) {
     return ""
   }
+
+  return url.endsWith("/") ? url.slice(0, -1) : url
 }
 
 // ========= Common Helper =========
@@ -281,7 +279,7 @@ async function buildClient() {
   }
   groupEnd()
 
-  const defaultBaseUrl = `${getUrlPath(process.env.REMOTE_URL)}/assets`
+  const defaultBaseUrl = `${formatUrlPath(process.env.REMOTE_URL)}/assets`
   const baseUrlCandidate = process.env.BASE_URL?.trim() ?? ""
   const baseUrlRaw =
     baseUrlCandidate.length > 0 ? baseUrlCandidate : defaultBaseUrl
