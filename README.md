@@ -29,7 +29,7 @@ cp .env.example .env
 必填字段：
 
 - `PORT`、`HOST`：服务端监听地址
-- `REMOTE_ASSETS_ORIGIN`：构建产物中静态资源的访问域名（默认为本地服务地址）
+- `REMOTE_URL`：构建产物中静态资源的访问域名（默认为本地服务地址）
 
 ## 常用命令
 
@@ -85,13 +85,13 @@ function App() {
 
 - `output/index.mjs`：经过 `tsup` 打包压缩的服务端入口。
 - `output/assets/`：每个 Widget 对应一个 `<name>.html` 入口文件，以及带哈希的 `chunks/*.js` 和 `static/*` 资源。
-- 构建脚本会根据 `REMOTE_ASSETS_ORIGIN` 生成 `<script type="module">` 与 `<link rel="stylesheet">`，便于部署时将静态资源托管到独立域名。
+- 构建脚本会根据 `REMOTE_URL` 生成 `<script type="module">` 与 `<link rel="stylesheet">`，便于部署时将静态资源托管到独立域名。
 
 ## 生产部署建议
 
 1. 执行 `pnpm run build`，确保 `output/` 目录就绪。
 2. 将 `output/` 上传到服务器，保证服务端进程可访问到同级的 `assets/` 目录。
-3. 在部署环境配置 `.env`（至少 `PORT`、`HOST`、`REMOTE_ASSETS_ORIGIN`）。
+3. 在部署环境配置 `.env`（至少 `PORT`、`HOST`、`REMOTE_URL`）。
 4. 使用进程管理工具（如 pm2/systemd）运行 `node output/index.mjs`，并通过反向代理暴露 `/mcp` 和 `/assets/`。
 
 ## 许可证

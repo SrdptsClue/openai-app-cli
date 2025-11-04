@@ -11,7 +11,7 @@ export const MCPServerMetadata: ConstructorParameters<typeof McpServer>[0] = {
 export const MCPServerOptions: ServerOptions = {}
 
 export function handleMCPServerRegistry(server: McpServer) {
-  const remoteAssetsOrigin = process.env.REMOTE_ASSETS_ORIGIN
+  const remoteAssetsOrigin = process.env.REMOTE_URL
 
   const greetingWidgetUri = "ui://widget/greeting.html"
 
