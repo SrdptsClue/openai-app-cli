@@ -141,10 +141,10 @@ async function buildClient() {
         input: inputs,
         output: {
           format: "es",
-          entryFileNames: "chunks/[hash].js",
-          chunkFileNames: "chunks/[hash].js",
+          entryFileNames: "chunks/[name].js",
+          chunkFileNames: "chunks/[name].js",
           assetFileNames() {
-            return "static/[hash][extname]"
+            return "static/[name][extname]"
           },
         },
       },
