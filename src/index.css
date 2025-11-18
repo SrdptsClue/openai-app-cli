@@ -1,70 +1,619 @@
 @import "tailwindcss";
 
 @theme {
-  --color-color-surface-primary: var(--color-bg-primary);
-  --color-color-surface-secondary: var(--color-bg-secondary);
-  --color-color-surface-tertiary: var(--color-bg-tertiary);
-
+  --color-color-bg-primary: var(--color-bg-primary);
+  --color-color-bg-secondary: var(--color-bg-secondary);
+  --color-color-bg-tertiary: var(--color-bg-tertiary);
+  --color-color-bg-scrim: var(--color-bg-scrim);
+  --color-color-bg-elevated-primary: var(--color-bg-elevated-primary);
+  --color-color-bg-elevated-secondary: var(--color-bg-elevated-secondary);
+  --color-color-bg-status-warning: var(--color-bg-status-warning);
+  --color-color-bg-status-error: var(--color-bg-status-error);
   --color-color-text-primary: var(--color-text-primary);
   --color-color-text-secondary: var(--color-text-secondary);
   --color-color-text-tertiary: var(--color-text-tertiary);
   --color-color-text-inverted: var(--color-text-inverted);
-
+  --color-color-text-inverted-static: var(--color-text-inverted-static);
+  --color-color-text-accent: var(--color-text-accent);
+  --color-color-text-status-warning: var(--color-text-status-warning);
+  --color-color-text-status-error: var(--color-text-status-error);
   --color-color-icon-primary: var(--color-icon-primary);
   --color-color-icon-secondary: var(--color-icon-secondary);
   --color-color-icon-tertiary: var(--color-icon-tertiary);
   --color-color-icon-inverted: var(--color-icon-inverted);
-
-  --color-color-accent-blue: var(--color-accent-blue);
-  --color-color-accent-red: var(--color-accent-red);
-  --color-color-accent-orange: var(--color-accent-orange);
-  --color-color-accent-green: var(--color-accent-green);
+  --color-color-icon-inverted-static: var(--color-icon-inverted-static);
+  --color-color-icon-accent: var(--color-icon-accent);
+  --color-color-icon-status-warning: var(--color-icon-status-warning);
+  --color-color-icon-status-error: var(--color-icon-status-error);
+  --color-color-icon-status-Success: var(--color-icon-status-Success);
+  --color-color-border-default: var(--color-border-default);
+  --color-color-border-heavy: var(--color-border-heavy);
+  --color-color-border-light: var(--color-border-light);
+  --color-color-border-status-warning: var(--color-border-status-warning);
+  --color-color-border-status-error: var(--color-border-status-error);
+  --color-color-interactive-bg-primary-default: var(
+    --color-interactive-bg-primary-default
+  );
+  --color-color-interactive-bg-primary-hover: var(
+    --color-interactive-bg-primary-hover
+  );
+  --color-color-interactive-bg-primary-press: var(
+    --color-interactive-bg-primary-press
+  );
+  --color-color-interactive-bg-primary-inactive: var(
+    --color-interactive-bg-primary-inactive
+  );
+  --color-color-interactive-bg-primary-selected: var(
+    --color-interactive-bg-primary-selected
+  );
+  --color-color-interactive-bg-secondary-default: var(
+    --color-interactive-bg-secondary-default
+  );
+  --color-color-interactive-bg-secondary-hover: var(
+    --color-interactive-bg-secondary-hover
+  );
+  --color-color-interactive-bg-secondary-press: var(
+    --color-interactive-bg-secondary-press
+  );
+  --color-color-interactive-bg-secondary-inactive: var(
+    --color-interactive-bg-secondary-inactive
+  );
+  --color-color-interactive-bg-secondary-selected: var(
+    --color-interactive-bg-secondary-selected
+  );
+  --color-color-interactive-bg-tertiary-default: var(
+    --color-interactive-bg-tertiary-default
+  );
+  --color-color-interactive-bg-tertiary-hover: var(
+    --color-interactive-bg-tertiary-hover
+  );
+  --color-color-interactive-bg-tertiary-press: var(
+    --color-interactive-bg-tertiary-press
+  );
+  --color-color-interactive-bg-tertiary-inactive: var(
+    --color-interactive-bg-tertiary-inactive
+  );
+  --color-color-interactive-bg-tertiary-selected: var(
+    --color-interactive-bg-tertiary-selected
+  );
+  --color-color-interactive-bg-accent-default: var(
+    --color-interactive-bg-accent-default
+  );
+  --color-color-interactive-bg-accent-hover: var(
+    --color-interactive-bg-accent-hover
+  );
+  --color-color-interactive-bg-accent-press: var(
+    --color-interactive-bg-accent-press
+  );
+  --color-color-interactive-bg-accent-inactive: var(
+    --color-interactive-bg-accent-inactive
+  );
+  --color-color-interactive-bg-danger-primary-default: var(
+    --color-interactive-bg-danger-primary-default
+  );
+  --color-color-interactive-bg-danger-primary-hover: var(
+    --color-interactive-bg-danger-primary-hover
+  );
+  --color-color-interactive-bg-danger-primary-press: var(
+    --color-interactive-bg-danger-primary-press
+  );
+  --color-color-interactive-bg-danger-primary-inactive: var(
+    --color-interactive-bg-danger-primary-inactive
+  );
+  --color-color-interactive-bg-danger-secondary-default: var(
+    --color-interactive-bg-danger-secondary-default
+  );
+  --color-color-interactive-bg-danger-secondary-hover: var(
+    --color-interactive-bg-danger-secondary-hover
+  );
+  --color-color-interactive-bg-danger-secondary-press: var(
+    --color-interactive-bg-danger-secondary-press
+  );
+  --color-color-interactive-bg-danger-secondary-inactive: var(
+    --color-interactive-bg-danger-secondary-inactive
+  );
+  --color-color-interactive-label-primary-default: var(
+    --color-interactive-label-primary-default
+  );
+  --color-color-interactive-label-primary-hover: var(
+    --color-interactive-label-primary-hover
+  );
+  --color-color-interactive-label-primary-press: var(
+    --color-interactive-label-primary-press
+  );
+  --color-color-interactive-label-primary-inactive: var(
+    --color-interactive-label-primary-inactive
+  );
+  --color-color-interactive-label-primary-selected: var(
+    --color-interactive-label-primary-selected
+  );
+  --color-color-interactive-label-secondary-default: var(
+    --color-interactive-label-secondary-default
+  );
+  --color-color-interactive-label-secondary-hover: var(
+    --color-interactive-label-secondary-hover
+  );
+  --color-color-interactive-label-secondary-press: var(
+    --color-interactive-label-secondary-press
+  );
+  --color-color-interactive-label-secondary-inactive: var(
+    --color-interactive-label-secondary-inactive
+  );
+  --color-color-interactive-label-secondary-selected: var(
+    --color-interactive-label-secondary-selected
+  );
+  --color-color-interactive-label-tertiary-default: var(
+    --color-interactive-label-tertiary-default
+  );
+  --color-color-interactive-label-tertiary-hover: var(
+    --color-interactive-label-tertiary-hover
+  );
+  --color-color-interactive-label-tertiary-press: var(
+    --color-interactive-label-tertiary-press
+  );
+  --color-color-interactive-label-tertiary-inactive: var(
+    --color-interactive-label-tertiary-inactive
+  );
+  --color-color-interactive-label-tertiary-selected: var(
+    --color-interactive-label-tertiary-selected
+  );
+  --color-color-interactive-label-accent-default: var(
+    --color-interactive-label-accent-default
+  );
+  --color-color-interactive-label-accent-hover: var(
+    --color-interactive-label-accent-hover
+  );
+  --color-color-interactive-label-accent-press: var(
+    --color-interactive-label-accent-press
+  );
+  --color-color-interactive-label-accent-inactive: var(
+    --color-interactive-label-accent-inactive
+  );
+  --color-color-interactive-label-accent-selected: var(
+    --color-interactive-label-accent-selected
+  );
+  --color-color-interactive-label-danger-primary-default: var(
+    --color-interactive-label-danger-primary-default
+  );
+  --color-color-interactive-label-danger-primary-hover: var(
+    --color-interactive-label-danger-primary-hover
+  );
+  --color-color-interactive-label-danger-primary-press: var(
+    --color-interactive-label-danger-primary-press
+  );
+  --color-color-interactive-label-danger-primary-inactive: var(
+    --color-interactive-label-danger-primary-inactive
+  );
+  --color-color-interactive-label-danger-secondary-default: var(
+    --color-interactive-label-danger-secondary-default
+  );
+  --color-color-interactive-label-danger-secondary-hover: var(
+    --color-interactive-label-danger-secondary-hover
+  );
+  --color-color-interactive-label-danger-secondary-press: var(
+    --color-interactive-label-danger-secondary-press
+  );
+  --color-color-interactive-label-danger-secondary-inactive: var(
+    --color-interactive-label-danger-secondary-inactive
+  );
+  --color-color-interactive-icon-primary-default: var(
+    --color-interactive-icon-primary-default
+  );
+  --color-color-interactive-icon-primary-hover: var(
+    --color-interactive-icon-primary-hover
+  );
+  --color-color-interactive-icon-primary-press: var(
+    --color-interactive-icon-primary-press
+  );
+  --color-color-interactive-icon-primary-selected: var(
+    --color-interactive-icon-primary-selected
+  );
+  --color-color-interactive-icon-primary-inactive: var(
+    --color-interactive-icon-primary-inactive
+  );
+  --color-color-interactive-icon-secondary-default: var(
+    --color-interactive-icon-secondary-default
+  );
+  --color-color-interactive-icon-secondary-hover: var(
+    --color-interactive-icon-secondary-hover
+  );
+  --color-color-interactive-icon-secondary-press: var(
+    --color-interactive-icon-secondary-press
+  );
+  --color-color-interactive-icon-secondary-selected: var(
+    --color-interactive-icon-secondary-selected
+  );
+  --color-color-interactive-icon-secondary-inactive: var(
+    --color-interactive-icon-secondary-inactive
+  );
+  --color-color-interactive-icon-tertiary-default: var(
+    --color-interactive-icon-tertiary-default
+  );
+  --color-color-interactive-icon-tertiary-hover: var(
+    --color-interactive-icon-tertiary-hover
+  );
+  --color-color-interactive-icon-tertiary-press: var(
+    --color-interactive-icon-tertiary-press
+  );
+  --color-color-interactive-icon-tertiary-selected: var(
+    --color-interactive-icon-tertiary-selected
+  );
+  --color-color-interactive-icon-tertiary-inactive: var(
+    --color-interactive-icon-tertiary-inactive
+  );
+  --color-color-interactive-icon-accent-default: var(
+    --color-interactive-icon-accent-default
+  );
+  --color-color-interactive-icon-accent-hover: var(
+    --color-interactive-icon-accent-hover
+  );
+  --color-color-interactive-icon-accent-press: var(
+    --color-interactive-icon-accent-press
+  );
+  --color-color-interactive-icon-accent-selected: var(
+    --color-interactive-icon-accent-selected
+  );
+  --color-color-interactive-icon-accent-inactive: var(
+    --color-interactive-icon-accent-inactive
+  );
+  --color-color-interactive-icon-danger-primary-default: var(
+    --color-interactive-icon-danger-primary-default
+  );
+  --color-color-interactive-icon-danger-primary-hover: var(
+    --color-interactive-icon-danger-primary-hover
+  );
+  --color-color-interactive-icon-danger-primary-press: var(
+    --color-interactive-icon-danger-primary-press
+  );
+  --color-color-interactive-icon-danger-primary-inactive: var(
+    --color-interactive-icon-danger-primary-inactive
+  );
+  --color-color-interactive-icon-danger-secondary-default: var(
+    --color-interactive-icon-danger-secondary-default
+  );
+  --color-color-interactive-icon-danger-secondary-hover: var(
+    --color-interactive-icon-danger-secondary-hover
+  );
+  --color-color-interactive-icon-danger-secondary-press: var(
+    --color-interactive-icon-danger-secondary-press
+  );
+  --color-color-interactive-icon-danger-secondary-inactive: var(
+    --color-interactive-icon-danger-secondary-inactive
+  );
+  --color-color-interactive-border-secondary-default: var(
+    --color-interactive-border-secondary-default
+  );
+  --color-color-interactive-border-secondary-hover: var(
+    --color-interactive-border-secondary-hover
+  );
+  --color-color-interactive-border-secondary-press: var(
+    --color-interactive-border-secondary-press
+  );
+  --color-color-interactive-border-secondary-inactive: var(
+    --color-interactive-border-secondary-inactive
+  );
+  --color-color-interactive-border-tertiary-default: var(
+    --color-interactive-border-tertiary-default
+  );
+  --color-color-interactive-border-tertiary-hover: var(
+    --color-interactive-border-tertiary-hover
+  );
+  --color-color-interactive-border-tertiary-press: var(
+    --color-interactive-border-tertiary-press
+  );
+  --color-color-interactive-border-tertiary-inactive: var(
+    --color-interactive-border-tertiary-inactive
+  );
+  --color-color-interactive-border-danger-secondary-default: var(
+    --color-interactive-border-danger-secondary-default
+  );
+  --color-color-interactive-border-danger-secondary-hover: var(
+    --color-interactive-border-danger-secondary-hover
+  );
+  --color-color-interactive-border-danger-secondary-press: var(
+    --color-interactive-border-danger-secondary-press
+  );
+  --color-color-interactive-border-danger-secondary-inactive: var(
+    --color-interactive-border-danger-secondary-inactive
+  );
+  --color-color-interactive-border-focus: var(
+    --color-interactive-border-focus
+  );
+  --color-color-utility-scrollbar: var(--color-utility-scrollbar);
+  --color-color-utility-system-Light: var(--color-utility-system-Light);
+  --color-color-utility-system-Dark: var(--color-utility-system-Dark);
+  --color-color-system-iOS-sheet-background-back: var(
+    --color-system-iOS-sheet-background-back
+  );
+  --color-color-system-iOS-sheet-background-front: var(
+    --color-system-iOS-sheet-background-front
+  );
+  --color-color-system-iOS-iOS-text-secondary: var(
+    --color-system-iOS-iOS-text-secondary
+  );
+  --color-color-system-iOS-iOS-iOS-divider: var(
+    --color-system-iOS-iOS-iOS-divider
+  );
+  --color-color-system-mobile-bg: var(--color-system-mobile-bg);
+  --color-color-Component-Sidebar-bg: var(--color-Component-Sidebar-bg);
 }
 
 @layer base {
   :root {
-    color-scheme: light;
     --color-bg-primary: #ffffff;
     --color-bg-secondary: #e8e8e8;
     --color-bg-tertiary: #f3f3f3;
-
+    --color-bg-scrim: rgba(227, 227, 227, 0.5);
+    --color-bg-elevated-primary: #ffffff;
+    --color-bg-elevated-secondary: #f3f3f3;
+    --color-bg-status-warning: #fff5f0;
+    --color-bg-status-error: #fff0f0;
     --color-text-primary: #0d0d0d;
     --color-text-secondary: #5d5d5d;
     --color-text-tertiary: #8f8f8f;
-    --color-text-inverted: #8f8f8f;
-
+    --color-text-inverted: #ffffff;
+    --color-text-inverted-static: #ffffff;
+    --color-text-accent: #48aaff;
+    --color-text-status-warning: #e25507;
+    --color-text-status-error: #e02e2a;
     --color-icon-primary: #0d0d0d;
     --color-icon-secondary: #5d5d5d;
     --color-icon-tertiary: #8f8f8f;
-    --color-icon-inverted: #8f8f8f;
-
-    --color-accent-blue: #0285ff;
-    --color-accent-red: #e02e2a;
-    --color-accent-orange: #e25507;
-    --color-accent-green: #008635;
+    --color-icon-inverted: #ffffff;
+    --color-icon-inverted-static: #ffffff;
+    --color-icon-accent: #0285ff;
+    --color-icon-status-warning: #e25507;
+    --color-icon-status-error: #e02e2a;
+    --color-icon-status-Success: #00a240;
+    --color-border-default: rgba(13, 13, 13, 0.1);
+    --color-border-heavy: rgba(13, 13, 13, 0.15);
+    --color-border-light: rgba(13, 13, 13, 0.05);
+    --color-border-status-warning: #ffe7d9;
+    --color-border-status-error: #ffe1e0;
+    --color-interactive-bg-primary-default: #0d0d0d;
+    --color-interactive-bg-primary-hover: rgba(13, 13, 13, 0.8);
+    --color-interactive-bg-primary-press: rgba(13, 13, 13, 0.9);
+    --color-interactive-bg-primary-inactive: #0d0d0d;
+    --color-interactive-bg-primary-selected: #0d0d0d;
+    --color-interactive-bg-secondary-default: rgba(13, 13, 13, 0);
+    --color-interactive-bg-secondary-hover: rgba(13, 13, 13, 0.02);
+    --color-interactive-bg-secondary-press: rgba(13, 13, 13, 0.05);
+    --color-interactive-bg-secondary-inactive: rgba(13, 13, 13, 0);
+    --color-interactive-bg-secondary-selected: rgba(13, 13, 13, 0.05);
+    --color-interactive-bg-tertiary-default: #ffffff;
+    --color-interactive-bg-tertiary-hover: #f9f9f9;
+    --color-interactive-bg-tertiary-press: #f3f3f3;
+    --color-interactive-bg-tertiary-inactive: #ffffff;
+    --color-interactive-bg-tertiary-selected: #ffffff;
+    --color-interactive-bg-accent-default: rgba(255, 255, 255, 0);
+    --color-interactive-bg-accent-hover: rgba(2, 133, 255, 0.04);
+    --color-interactive-bg-accent-press: rgba(2, 133, 255, 0.09);
+    --color-interactive-bg-accent-inactive: rgba(255, 255, 255, 0);
+    --color-interactive-bg-danger-primary-default: #e02e2a;
+    --color-interactive-bg-danger-primary-hover: #fa423e;
+    --color-interactive-bg-danger-primary-press: #ba2623;
+    --color-interactive-bg-danger-primary-inactive: #e02e2a;
+    --color-interactive-bg-danger-secondary-default: rgba(13, 13, 13, 0);
+    --color-interactive-bg-danger-secondary-hover: rgba(13, 13, 13, 0);
+    --color-interactive-bg-danger-secondary-press: rgba(13, 13, 13, 0);
+    --color-interactive-bg-danger-secondary-inactive: rgba(13, 13, 13, 0);
+    --color-interactive-label-primary-default: #ffffff;
+    --color-interactive-label-primary-hover: #ffffff;
+    --color-interactive-label-primary-press: #ffffff;
+    --color-interactive-label-primary-inactive: #ffffff;
+    --color-interactive-label-primary-selected: #ffffff;
+    --color-interactive-label-secondary-default: #0d0d0d;
+    --color-interactive-label-secondary-hover: rgba(13, 13, 13, 0.9);
+    --color-interactive-label-secondary-press: rgba(13, 13, 13, 0.8);
+    --color-interactive-label-secondary-inactive: #0d0d0d;
+    --color-interactive-label-secondary-selected: #0d0d0d;
+    --color-interactive-label-tertiary-default: #5d5d5d;
+    --color-interactive-label-tertiary-hover: #5d5d5d;
+    --color-interactive-label-tertiary-press: #5d5d5d;
+    --color-interactive-label-tertiary-inactive: #5d5d5d;
+    --color-interactive-label-tertiary-selected: #5d5d5d;
+    --color-interactive-label-accent-default: #0285ff;
+    --color-interactive-label-accent-hover: #0285ff;
+    --color-interactive-label-accent-press: #0285ff;
+    --color-interactive-label-accent-inactive: #0285ff;
+    --color-interactive-label-accent-selected: #0285ff;
+    --color-interactive-label-danger-primary-default: #ffffff;
+    --color-interactive-label-danger-primary-hover: #ffffff;
+    --color-interactive-label-danger-primary-press: #ffffff;
+    --color-interactive-label-danger-primary-inactive: #ffffff;
+    --color-interactive-label-danger-secondary-default: #e02e2a;
+    --color-interactive-label-danger-secondary-hover: #fa423e;
+    --color-interactive-label-danger-secondary-press: #ba2623;
+    --color-interactive-label-danger-secondary-inactive: #e02e2a;
+    --color-interactive-icon-primary-default: #ffffff;
+    --color-interactive-icon-primary-hover: #ffffff;
+    --color-interactive-icon-primary-press: #ffffff;
+    --color-interactive-icon-primary-selected: #ffffff;
+    --color-interactive-icon-primary-inactive: #ffffff;
+    --color-interactive-icon-secondary-default: #0d0d0d;
+    --color-interactive-icon-secondary-hover: rgba(13, 13, 13, 0.9);
+    --color-interactive-icon-secondary-press: rgba(13, 13, 13, 0.8);
+    --color-interactive-icon-secondary-selected: #0d0d0d;
+    --color-interactive-icon-secondary-inactive: #0d0d0d;
+    --color-interactive-icon-tertiary-default: #5d5d5d;
+    --color-interactive-icon-tertiary-hover: #5d5d5d;
+    --color-interactive-icon-tertiary-press: #5d5d5d;
+    --color-interactive-icon-tertiary-selected: #5d5d5d;
+    --color-interactive-icon-tertiary-inactive: #5d5d5d;
+    --color-interactive-icon-accent-default: #0285ff;
+    --color-interactive-icon-accent-hover: #0285ff;
+    --color-interactive-icon-accent-press: #0285ff;
+    --color-interactive-icon-accent-selected: #0285ff;
+    --color-interactive-icon-accent-inactive: #0285ff;
+    --color-interactive-icon-danger-primary-default: #ffffff;
+    --color-interactive-icon-danger-primary-hover: #ffffff;
+    --color-interactive-icon-danger-primary-press: #ffffff;
+    --color-interactive-icon-danger-primary-inactive: #ffffff;
+    --color-interactive-icon-danger-secondary-default: #e02e2a;
+    --color-interactive-icon-danger-secondary-hover: #fa423e;
+    --color-interactive-icon-danger-secondary-press: #ba2623;
+    --color-interactive-icon-danger-secondary-inactive: #e02e2a;
+    --color-interactive-border-secondary-default: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-secondary-hover: rgba(13, 13, 13, 0.05);
+    --color-interactive-border-secondary-press: rgba(13, 13, 13, 0.05);
+    --color-interactive-border-secondary-inactive: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-tertiary-default: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-tertiary-hover: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-tertiary-press: rgba(13, 13, 13, 0.05);
+    --color-interactive-border-tertiary-inactive: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-danger-secondary-default: #e02e2a;
+    --color-interactive-border-danger-secondary-hover: #fa423e;
+    --color-interactive-border-danger-secondary-press: #ba2623;
+    --color-interactive-border-danger-secondary-inactive: #e02e2a;
+    --color-interactive-border-focus: #0d0d0d;
+    --color-utility-scrollbar: rgba(0, 0, 0, 0.04);
+    --color-utility-system-Light: true;
+    --color-utility-system-Dark: false;
+    --color-system-iOS-sheet-background-back: #dddddd;
+    --color-system-iOS-sheet-background-front: #f2f2f7;
+    --color-system-iOS-iOS-text-secondary: rgba(60, 60, 67, 0.6);
+    --color-system-iOS-iOS-iOS-divider: rgba(60, 60, 67, 0.36);
+    --color-system-mobile-bg: #ffffff;
+    --color-Component-Sidebar-bg: #f9f9f9;
   }
 
   :root[data-theme="dark"],
   .dark {
-    color-scheme: dark;
     --color-bg-primary: #212121;
     --color-bg-secondary: #303030;
     --color-bg-tertiary: #414141;
-
+    --color-bg-scrim: rgba(13, 13, 13, 0.5);
+    --color-bg-elevated-primary: #303030;
+    --color-bg-elevated-secondary: #212121;
+    --color-bg-status-warning: #4a2206;
+    --color-bg-status-error: #4d100e;
     --color-text-primary: #ffffff;
     --color-text-secondary: #cdcdcd;
     --color-text-tertiary: #afafaf;
-    --color-text-inverted: #afafaf;
-
+    --color-text-inverted: #0d0d0d;
+    --color-text-inverted-static: #ffffff;
+    --color-text-accent: #48aaff;
+    --color-text-status-warning: #ff9e6c;
+    --color-text-status-error: #ff8583;
     --color-icon-primary: #ffffff;
     --color-icon-secondary: #cdcdcd;
     --color-icon-tertiary: #afafaf;
-    --color-icon-inverted: #afafaf;
-
-    --color-accent-blue: #0285ff;
-    --color-accent-red: #ff8583;
-    --color-accent-orange: #ff9e6c;
-    --color-accent-green: #40c977;
+    --color-icon-inverted: #0d0d0d;
+    --color-icon-inverted-static: #ffffff;
+    --color-icon-accent: #48aaff;
+    --color-icon-status-warning: #ff9e6c;
+    --color-icon-status-error: #ff8583;
+    --color-icon-status-Success: #66d492;
+    --color-border-default: rgba(255, 255, 255, 0.15);
+    --color-border-heavy: rgba(255, 255, 255, 0.2);
+    --color-border-light: rgba(255, 255, 255, 0.05);
+    --color-border-status-warning: #4a2206;
+    --color-border-status-error: #4d100e;
+    --color-interactive-bg-primary-default: #ffffff;
+    --color-interactive-bg-primary-hover: rgba(255, 255, 255, 0.8);
+    --color-interactive-bg-primary-press: rgba(255, 255, 255, 0.9);
+    --color-interactive-bg-primary-inactive: #ffffff;
+    --color-interactive-bg-primary-selected: #ffffff;
+    --color-interactive-bg-secondary-default: rgba(255, 255, 255, 0);
+    --color-interactive-bg-secondary-hover: rgba(255, 255, 255, 0.1);
+    --color-interactive-bg-secondary-press: rgba(255, 255, 255, 0.05);
+    --color-interactive-bg-secondary-inactive: rgba(255, 255, 255, 0);
+    --color-interactive-bg-secondary-selected: rgba(255, 255, 255, 0.1);
+    --color-interactive-bg-tertiary-default: #212121;
+    --color-interactive-bg-tertiary-hover: #181818;
+    --color-interactive-bg-tertiary-press: #0d0d0d;
+    --color-interactive-bg-tertiary-inactive: #212121;
+    --color-interactive-bg-tertiary-selected: #212121;
+    --color-interactive-bg-accent-default: rgba(13, 13, 13, 0);
+    --color-interactive-bg-accent-hover: rgba(153, 206, 255, 0.15);
+    --color-interactive-bg-accent-press: rgba(153, 206, 255, 0.2);
+    --color-interactive-bg-accent-inactive: rgba(13, 13, 13, 0);
+    --color-interactive-bg-danger-primary-default: #e02e2a;
+    --color-interactive-bg-danger-primary-hover: #fa423e;
+    --color-interactive-bg-danger-primary-press: #ba2623;
+    --color-interactive-bg-danger-primary-inactive: #e02e2a;
+    --color-interactive-bg-danger-secondary-default: rgba(255, 255, 255, 0);
+    --color-interactive-bg-danger-secondary-hover: rgba(255, 255, 255, 0);
+    --color-interactive-bg-danger-secondary-press: rgba(255, 255, 255, 0);
+    --color-interactive-bg-danger-secondary-inactive: rgba(255, 255, 255, 0);
+    --color-interactive-label-primary-default: #0d0d0d;
+    --color-interactive-label-primary-hover: #0d0d0d;
+    --color-interactive-label-primary-press: #0d0d0d;
+    --color-interactive-label-primary-inactive: #0d0d0d;
+    --color-interactive-label-primary-selected: #0d0d0d;
+    --color-interactive-label-secondary-default: #ffffff;
+    --color-interactive-label-secondary-hover: rgba(255, 255, 255, 0.9);
+    --color-interactive-label-secondary-press: rgba(255, 255, 255, 0.8);
+    --color-interactive-label-secondary-inactive: #f3f3f3;
+    --color-interactive-label-secondary-selected: #f3f3f3;
+    --color-interactive-label-tertiary-default: #cdcdcd;
+    --color-interactive-label-tertiary-hover: #cdcdcd;
+    --color-interactive-label-tertiary-press: #cdcdcd;
+    --color-interactive-label-tertiary-inactive: #cdcdcd;
+    --color-interactive-label-tertiary-selected: #cdcdcd;
+    --color-interactive-label-accent-default: #48aaff;
+    --color-interactive-label-accent-hover: #48aaff;
+    --color-interactive-label-accent-press: #48aaff;
+    --color-interactive-label-accent-inactive: #48aaff;
+    --color-interactive-label-accent-selected: #48aaff;
+    --color-interactive-label-danger-primary-default: #ffffff;
+    --color-interactive-label-danger-primary-hover: #ffffff;
+    --color-interactive-label-danger-primary-press: #ffffff;
+    --color-interactive-label-danger-primary-inactive: #ffffff;
+    --color-interactive-label-danger-secondary-default: #fa423e;
+    --color-interactive-label-danger-secondary-hover: #ff6764;
+    --color-interactive-label-danger-secondary-press: #e02e2a;
+    --color-interactive-label-danger-secondary-inactive: #fa423e;
+    --color-interactive-icon-primary-default: #0d0d0d;
+    --color-interactive-icon-primary-hover: #0d0d0d;
+    --color-interactive-icon-primary-press: #0d0d0d;
+    --color-interactive-icon-primary-selected: #0d0d0d;
+    --color-interactive-icon-primary-inactive: #0d0d0d;
+    --color-interactive-icon-secondary-default: #ffffff;
+    --color-interactive-icon-secondary-hover: rgba(255, 255, 255, 0.9);
+    --color-interactive-icon-secondary-press: rgba(255, 255, 255, 0.8);
+    --color-interactive-icon-secondary-selected: #f3f3f3;
+    --color-interactive-icon-secondary-inactive: #f3f3f3;
+    --color-interactive-icon-tertiary-default: #cdcdcd;
+    --color-interactive-icon-tertiary-hover: #cdcdcd;
+    --color-interactive-icon-tertiary-press: #cdcdcd;
+    --color-interactive-icon-tertiary-selected: #cdcdcd;
+    --color-interactive-icon-tertiary-inactive: #cdcdcd;
+    --color-interactive-icon-accent-default: #48aaff;
+    --color-interactive-icon-accent-hover: #48aaff;
+    --color-interactive-icon-accent-press: #48aaff;
+    --color-interactive-icon-accent-selected: #48aaff;
+    --color-interactive-icon-accent-inactive: #48aaff;
+    --color-interactive-icon-danger-primary-default: #ffffff;
+    --color-interactive-icon-danger-primary-hover: #ffffff;
+    --color-interactive-icon-danger-primary-press: #ffffff;
+    --color-interactive-icon-danger-primary-inactive: #ffffff;
+    --color-interactive-icon-danger-secondary-default: #fa423e;
+    --color-interactive-icon-danger-secondary-hover: #ff6764;
+    --color-interactive-icon-danger-secondary-press: #e02e2a;
+    --color-interactive-icon-danger-secondary-inactive: #fa423e;
+    --color-interactive-border-secondary-default: rgba(255, 255, 255, 0.15);
+    --color-interactive-border-secondary-hover: rgba(255, 255, 255, 0.15);
+    --color-interactive-border-secondary-press: rgba(255, 255, 255, 0.2);
+    --color-interactive-border-secondary-inactive: rgba(255, 255, 255, 0.1);
+    --color-interactive-border-tertiary-default: rgba(255, 255, 255, 0.1);
+    --color-interactive-border-tertiary-hover: rgba(255, 255, 255, 0.15);
+    --color-interactive-border-tertiary-press: rgba(255, 255, 255, 0.1);
+    --color-interactive-border-tertiary-inactive: rgba(13, 13, 13, 0.1);
+    --color-interactive-border-danger-secondary-default: #fa423e;
+    --color-interactive-border-danger-secondary-hover: #ff6764;
+    --color-interactive-border-danger-secondary-press: #e02e2a;
+    --color-interactive-border-danger-secondary-inactive: #fa423e;
+    --color-interactive-border-focus: #ffffff;
+    --color-utility-scrollbar: rgba(255, 255, 255, 0.2);
+    --color-utility-system-Light: false;
+    --color-utility-system-Dark: true;
+    --color-system-iOS-sheet-background-back: #141416;
+    --color-system-iOS-sheet-background-front: #1c1c1e;
+    --color-system-iOS-iOS-text-secondary: rgba(235, 235, 245, 0.6);
+    --color-system-iOS-iOS-iOS-divider: rgba(84, 84, 88, 0.65);
+    --color-system-mobile-bg: #000000;
+    --color-Component-Sidebar-bg: #181818;
   }
 
   body {
@@ -81,29 +630,69 @@
     scrollbar-color: auto;
   }
 
-  /* Base style for scrollable elements */
   .overflow-auto,
   .overflow-scroll,
   .overflow-x-auto,
   .overflow-y-auto,
   .overflow-x-scroll,
   .overflow-y-scroll {
-    scrollbar-color: rgb(0, 0, 0, 0.1) transparent;
-
-    @media (prefers-color-scheme: dark) {
-      scrollbar-color: rgb(255, 255, 255, 0.1) transparent;
-    }
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
   }
 
-  /* Hover state directly on the scrollable element */
+  :root[data-theme="dark"] .overflow-auto,
+  :root[data-theme="dark"] .overflow-scroll,
+  :root[data-theme="dark"] .overflow-x-auto,
+  :root[data-theme="dark"] .overflow-y-auto,
+  :root[data-theme="dark"] .overflow-x-scroll,
+  :root[data-theme="dark"] .overflow-y-scroll,
+  .dark .overflow-auto,
+  .dark .overflow-scroll,
+  .dark .overflow-x-auto,
+  .dark .overflow-y-auto,
+  .dark .overflow-x-scroll,
+  .dark .overflow-y-scroll {
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
   .overflow-auto:hover,
   .overflow-scroll:hover,
   .overflow-x-auto:hover,
   .overflow-y-auto:hover {
-    scrollbar-color: rgb(0, 0, 0, 0.2) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      scrollbar-color: rgb(255, 255, 255, 0.2) transparent;
+  :root[data-theme="dark"] .overflow-auto:hover,
+  :root[data-theme="dark"] .overflow-scroll:hover,
+  :root[data-theme="dark"] .overflow-x-auto:hover,
+  :root[data-theme="dark"] .overflow-y-auto:hover,
+  .dark .overflow-auto:hover,
+  .dark .overflow-scroll:hover,
+  .dark .overflow-x-auto:hover,
+  .dark .overflow-y-auto:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+}
+
+@layer components {
+  .skeleton-shimmer {
+    flex-shrink: 0;
+    background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+    background-size: 1000px 100%;
+    animation: skeleton-shimmer 3s linear infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% {
+      background-position: -1000px 0;
     }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  :root[data-theme="dark"] .skeleton-shimmer,
+  .dark .skeleton-shimmer {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    background-size: 1000px 100%;
   }
 }
